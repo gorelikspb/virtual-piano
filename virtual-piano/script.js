@@ -1,15 +1,6 @@
 const COLLECTION = document.querySelectorAll(".piano-key", ".sharp");
 const PIANO = document.getElementById('piano')
 
-// COLLECTION.forEach((elem) => {
-//   elem.addEventListener('mousedown', (event)=> {
-//     event.target.classList.add('active');
-//   })
-//   elem.addEventListener('mouseup', (event)=> {
-//     event.target.classList.remove('active');
-//   })
-// })
-
 function playAudio(url) { 
   new Audio(url).play();
 }
@@ -26,10 +17,6 @@ const stopSound = (event) => {
   event.target.classList.remove("piano-key-active");
 }
 
-
-// PIANO.addEventListener("mousedown", startCorrespondOver, false);
-// PIANO.addEventListener("mouseup", stopCorrespondOver)
-
 const startCorrespondOver = (event) => {
   if (event.target.classList.contains("piano-key")) {
     event.target.classList.add("piano-key-active");
@@ -42,7 +29,6 @@ const startCorrespondOver = (event) => {
   });
 }
 
-
 const stopCorrespondOver = () => {
   COLLECTION.forEach((elem) => {
     elem.classList.remove("piano-key-active");
@@ -53,23 +39,9 @@ const stopCorrespondOver = () => {
 }
 
 
-PIANO.addEventListener('mousedown', startCorrespondOver, false //startSound//(event)=> {
-//   event.target.classList.add('piano-key-active');
-//   let note = event.target.getAttribute('data-note');
-//   playAudio('assets/audio/' + note + '.mp3');
-  
+PIANO.addEventListener('mousedown', startCorrespondOver, false)
 
-// }
-
-)
-
-window.addEventListener('mouseup', stopCorrespondOver//(event)=> {
-//   event.target.classList.remove('piano-key-active');
-
-// }
-)
-
-
+window.addEventListener('mouseup', stopCorrespondOver)
 
 const BTN_NOTES = document.querySelector('.btn-notes');
 const BTN_LETTERS = document.querySelector('.btn-letters');
@@ -81,10 +53,6 @@ BTN_LETTERS.addEventListener('mousedown', (event)=>{
   COLLECTION.forEach((elem) => {
     elem.classList.add('letter');
   })
-
-  // for (let elem of pianoKeys){
-  //   elem.classList.add("название класса")} так сразу будет добавляться класс ко всем piano-key
-
 })
 
 BTN_NOTES.addEventListener('mousedown', (event)=>{
@@ -102,7 +70,6 @@ BTN_NOTES.addEventListener('mousedown', (event)=>{
 
 
 window.addEventListener('keyup', (event)=> {
-  // event.target.classList.remove('active');
 
   COLLECTION.forEach((elem) => {
     elem.classList.remove('piano-key-active');
@@ -128,54 +95,39 @@ const KEYS = {
 
 };
 
-
-
 window.addEventListener('keydown', (event) => {
   code = (event.code);
   let note = KEYS[code];
   let active_key = document.querySelector('[data-note='+note +']');
-  console.log(active_key);
   
   COLLECTION.forEach((elem) => {
     elem.classList.remove('piano-key-active');
   })
 
   active_key.classList.add('piano-key-active');
+  if (!event.repeat) {
   playAudio('assets/audio/' + note + '.mp3');
+  }
   
 });
  
 
-// const PIANO = document.getElementById("piano");
+const BTN_FULLSCREEN = document.querySelector(".fullscreen");
 
-// const startSound = (event) => {
-//   event.target.classList.add("active");
-// }
 
-// const stopSound = (event) => {
-//   event.target.classList.remove("active");
-// }
+BTN_FULLSCREEN.addEventListener('click', (event)=>{
+  // event.target.classList.add('btn-active');
+  // BTN_LETTERS.classList.remove('btn-active');
+  toggleFullScreen();
 
-// const startCorrespondOver = (event) => {
-//   if (event.target.classList.contains("piano-button")) {
-//     event.target.classList.add("active");
-//   }
+})
 
-//   COLLECTION.forEach((elem) => {
-//     elem.addEventListener("mouseover", startSound)
-//     elem.addEventListener("mouseout", stopSound)
-//   });
-// }
-
-// const stopCorrespondOver = () => {
-//   COLLECTION.forEach((elem) => {
-//     elem.classList.remove("active");
-//     elem.removeEventListener("mouseover", startSound)
-//     elem.removeEventListener("mouseout", stopSound)
-//   });
-// }
-
-// PIANO.addEventListener("mousedown", startCorrespondOver, false);
-// PIANO.addEventListener("mouseup", stopCorrespondOver)
-
-// // при клике по клавише пианино мышкой проигрывается соответствующая этой клавише нота, клавиша переходит в активное состояние
+function toggleFullScreen() {
+  if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen();
+  } else {
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    }
+  }
+}
