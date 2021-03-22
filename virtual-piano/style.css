@@ -97,10 +97,6 @@ body {
 
 
 
-/* .piano-key:hover {
-	background-color: #fff;
-} */
-
 .keys-sharp {
 	position: absolute;
 	top: 0;
@@ -153,10 +149,6 @@ body {
 	content: attr(data-letter);
 }
 
-
-/* .lettered{
-	background-color:red;
-} */
 
 
 .piano-key:hover::before,
