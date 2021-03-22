@@ -94,9 +94,15 @@ body {
 	transition: 0.3s;
 	cursor: pointer;
 }
-.piano-key:hover {
-	background-color: #fff;
+
+.active{
+	background-color:red;
 }
+
+/* .piano-key:hover {
+	background-color: #fff;
+} */
+
 .keys-sharp {
 	position: absolute;
 	top: 0;
@@ -141,11 +147,19 @@ body {
 	bottom: -45px;
 	left: 20px;
 	transition: 0.3s;
+	pointer-events: none;
 }
 .piano-key::after {
 	display: none;
 	content: attr(data-letter);
 }
+
+
+/* .lettered{
+	background-color:red;
+} */
+
+
 .piano-key:hover::before,
 .piano-key:hover::after {
 	color: #d7dfe6;
