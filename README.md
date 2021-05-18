@@ -1,4 +1,4 @@
-==Виртуальное пианино==
+===Виртуальное пианино===
 
 *Дано: готовый html&css - https://github.com/rolling-scopes-school/stage1-tasks/tree/virtual-piano/virtual-piano
 
