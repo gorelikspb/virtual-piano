@@ -4,7 +4,7 @@
 
 **Задание:** используя JavaScript, реализовать функционал пианино, согласно требованиям:
 
-**Деплой** https://github.com/gorelikspb/virtual-piano
+**Деплой** https://gorelikspb.github.io/virtual-piano/virtual-piano/
 
 ![image](https://user-images.githubusercontent.com/66779925/118631076-d687ae80-b7d7-11eb-965e-98d79cf6a285.png)
 
